@@ -1,7 +1,7 @@
 # AIMonitor ESP32 desk display
 
 Firmware that turns an **ESP32-2432S028 "Cheap Yellow Display"** (2.8" 320×240 touch screen) into a desk display for
-[AI Usage Monitor 2.0](https://github.com/epinephrinerx/AIMonitor). The PC app keeps collecting quota for Claude,
+[AIMonitor](https://github.com/epinephrinerx/AIMonitor) (2.0.5 or later). The PC app keeps collecting quota for Claude,
 OpenAI / Codex and AGY; the board shows the same readings as the tray, one service per page, as gauges.
 
 The board never talks to any AI service and holds no credentials. It only receives service and window names,
@@ -51,7 +51,7 @@ python -m esptool --port COM5 write-flash 0 aimonitor-cyd-v0.1.0.bin
 pio run -t upload
 ```
 
-Then in AI Usage Monitor 2.0 open **Settings › ESP32 desk display**, tick *Send quota to an ESP32 display over USB*
+Then in AIMonitor open **Settings › ESP32 desk display**, tick *Send quota to an ESP32 display over USB*
 and pick the port (or *Find automatically*).
 
 ## Protocol
@@ -75,3 +75,7 @@ src/ui.*           header, gauges, layout for both orientations
 docs/PROTOCOL.md   PC ↔ display protocol v1
 tools/send_mock.py synthetic frames for testing
 ```
+
+## Licence
+
+GPL-3.0-or-later, the same as AIMonitor. See `LICENSE`.
