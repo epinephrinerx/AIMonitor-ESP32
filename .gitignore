@@ -1,0 +1,6 @@
+.pio/
+.vscode/
+dist/
+# Factory firmware dump of the board: vendor binary, kept locally only
+backup/
+__pycache__/
