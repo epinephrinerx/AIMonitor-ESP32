@@ -35,16 +35,18 @@ def build_frame(tick: int) -> dict:
             {
                 "id": "openai", "name": "OpenAI / Codex", "stale": tick % 12 >= 9, "err": "",
                 "w": [
-                    {"t": "5-hour", "pct": 12.0, "sev": 0, "reset": now + 4 * 3600 + 2 * 60, "lock": ""},
+                    # ชื่อตาม CodexQuotaMapper: Session (primary), Weekly (secondary 7 วัน)
+                    {"t": "Session", "pct": 12.0, "sev": 0, "reset": now + 4 * 3600 + 2 * 60, "lock": ""},
                     {"t": "Weekly", "pct": None, "sev": 0, "reset": 0, "lock": ""},
                 ],
             },
             {
-                "id": "agy", "name": "AGY", "stale": False, "err": "",
+                "id": "agy", "name": "Gemini / AGY", "stale": False, "err": "",
                 "w": [
-                    {"t": "Gemini 5h", "pct": 95.0, "sev": 3, "reset": now + 25 * 60, "lock": ""},
-                    {"t": "Claude/GPT 5h", "pct": 47.0, "sev": 0, "reset": now + 3 * 3600, "lock": ""},
-                    {"t": "Gemini week", "pct": 100.0, "sev": 3, "reset": now + 2 * 86400, "lock": "limit reached"},
+                    # ชื่อตาม AgyUsageMapper: "<กลุ่ม> · Session/Weekly" ส่งมาเป็น "<กลุ่ม> Session/Weekly"
+                    {"t": "Gemini Session", "pct": 95.0, "sev": 3, "reset": now + 25 * 60, "lock": ""},
+                    {"t": "Claude / GPT Session", "pct": 47.0, "sev": 0, "reset": now + 3 * 3600, "lock": ""},
+                    {"t": "Gemini Weekly", "pct": 100.0, "sev": 3, "reset": now + 2 * 86400, "lock": "limit reached"},
                 ],
             },
         ],

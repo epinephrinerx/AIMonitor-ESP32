@@ -2,25 +2,31 @@
 
 Firmware that turns an **ESP32-2432S028 "Cheap Yellow Display"** (2.8" 320×240 touch screen) into a desk display for
 [AIMonitor](https://github.com/epinephrinerx/AIMonitor) (2.0.5 or later). The PC app keeps collecting quota for Claude,
-OpenAI / Codex and AGY; the board shows the same readings as the tray, one service per page, as gauges.
+OpenAI / Codex and AGY; the board shows the same readings as the tray as gauges, one page per kind of quota.
 
 The board never talks to any AI service and holds no credentials. It only receives service and window names,
 percentages, severity and reset times over USB serial.
 
 ## What it shows
 
-- One page per service with a gauge per quota window (260° arc, colour and word for severity: Normal, High,
-  Very high, Critical), the window name and a countdown to the reset.
+- **Session** page: the 5-hour session of every service side by side (Claude, Codex, Antigravity).
+  **Weekly** page: the weekly quota of every service. Quota of any other kind goes on an **Other** page.
+- One gauge per service on each page: the window named exactly like the page ("Session", "Weekly"), otherwise the
+  service's first window of that kind (Antigravity: its first model group, shown in small type under the name).
+  Model-only windows such as Weekly Fable are left out.
+- Each gauge: 260° arc, colour and word for severity (Normal, High, Very high, Critical), the service name and a
+  countdown to the reset down to the second (`2h 05m 09s`, `3d 04h 12m`; `2:05:09` when the cell is narrow).
 - `--` when a service reports no percentage (never an invented value), `Locked` for a locked window, grey `Stale`
-  when the PC's last refresh of that service failed.
-- Clock and page dots in the header; "no update Nm" when the PC has been silent for 3 minutes.
+  when the PC's last refresh of that service failed. A service with no data at all shows `--` and the reason on
+  every page.
+- Page name, clock and page dots in the header; "no update Nm" when the PC has been silent for 3 minutes.
 - The RGB LED on the back: off when all is normal, yellow for High/Very high, red for Critical.
 
 ## Controls
 
 | Action | Result |
 |---|---|
-| Tap anywhere | Next service (pages also turn by themselves every 10 s) |
+| Tap anywhere | Next page (pages also turn by themselves every 10 s) |
 | Tap ⟳ beside the clock | Rotate the screen 90° (portrait or landscape; remembered across power cycles) |
 | Hold 2 s anywhere | Rotate as well |
 

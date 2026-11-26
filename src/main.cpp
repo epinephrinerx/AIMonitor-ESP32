@@ -1,6 +1,6 @@
 // AIMonitor display สำหรับ ESP32-2432S028 (CYD 2USB, ILI9341 + XPT2046)
 // รับ snapshot โควตาจาก AIMonitor บน PC ผ่าน USB serial (ดู docs/PROTOCOL.md)
-// แตะจอ = เปลี่ยนหน้า, หน้าเปลี่ยนเองทุก 10 วินาทีเมื่อมีหลายหน้า
+// หน้า Session / Weekly (service ละหนึ่ง gauge), แตะจอ = เปลี่ยนหน้า, หน้าเปลี่ยนเองทุก 10 วินาที
 // ปุ่มข้างนาฬิกา (หรือกดค้าง 2 วินาทีตรงไหนก็ได้) = หมุนจอทีละ 90° และจำไว้ใน NVS
 
 #include <Arduino.h>
