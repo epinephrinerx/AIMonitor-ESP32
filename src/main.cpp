@@ -140,6 +140,7 @@ void setup() {
   ts.begin(touchSpi);
 
   prefs.begin("aimonitor", false);
+  uiSetLightTheme(prefs.getBool("light", false));
   applyRotation(prefs.getUChar("rot", DEFAULT_ROTATION));
   uiBegin();
   Serial.printf("hello aimonitor-cyd %d\n", PROTOCOL_VERSION);
@@ -170,6 +171,9 @@ void loop() {
   } else if (!touched && wasTouched && !longPressDone) {
     if (uiHitRotateButton(pressX, pressY)) {
       rotateScreen();
+    } else if (uiHitThemeButton(pressX, pressY)) {
+      uiSetLightTheme(!uiLightTheme());
+      prefs.putBool("light", uiLightTheme());
     } else {
       uiNextPage();
       lastPageTurn = millis();

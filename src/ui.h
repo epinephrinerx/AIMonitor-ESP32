@@ -18,3 +18,8 @@ void uiOrientationChanged();
 
 // พิกัดที่แตะ (หลังแปลงตามทิศจอแล้ว) โดนปุ่มหมุนจอข้างนาฬิกาหรือไม่ (เผื่อขอบให้กดง่าย)
 bool uiHitRotateButton(int x, int y);
+
+// ปุ่มสลับธีมสว่าง/มืด ซ้ายของปุ่มหมุนจอ
+bool uiHitThemeButton(int x, int y);
+void uiSetLightTheme(bool light);  // วาดใหม่ทั้งจอในรอบถัดไป
+bool uiLightTheme();
