@@ -49,10 +49,10 @@ screen stays blank.
 
 ## Install
 
-**Prebuilt (release):** download `aimonitor-cyd-v0.1.0.bin` from the release and flash it at offset 0:
+**Prebuilt (release):** download `aimonitor-cyd-v0.2.0.bin` from the release and flash it at offset 0:
 
 ```
-python -m esptool --port COM5 write-flash 0 aimonitor-cyd-v0.1.0.bin
+python -m esptool --port COM5 write-flash 0 aimonitor-cyd-v0.2.0.bin
 ```
 
 **From source** with [PlatformIO](https://platformio.org/): set `upload_port` in `platformio.ini`, then
